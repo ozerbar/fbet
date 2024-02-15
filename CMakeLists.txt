@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(fbet)
 
+set(octomap_DIR "/opt/ros/noetic/share/octomap")
+
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -48,7 +50,8 @@ set(LINK_LIBS
   ${PCL_LIBRARIES}
 )
 
-add_library(${PROJECT_NAME} src/FBETServer.cpp )
+add_library(${PROJECT_NAME} src/FBETServer.cpp 
+src/OctomapLUT.cpp)
 target_link_libraries(${PROJECT_NAME} ${LINK_LIBS})
 add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_gencfg)
 
